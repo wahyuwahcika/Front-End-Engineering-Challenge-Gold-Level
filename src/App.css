@@ -1,38 +1,367 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  width: 300px;
+  height: 100px;
+  fill: #0d28a6;
+  stroke-width: 3;
+  stroke: #0d28a6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* NAV BAR */
+button {
+  background-color: #0d28a6;
+}
+nav {
+  display: flex;
+  background-color: #f1f3ff;
+  justify-content: space-around;
+  padding: 20px 0; /* bisa height */
+  color: black;
+}
+nav .logo {
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 3px;
+}
+nav .logo button {
+  color: blue;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  background-color: #f1f3ff;
+  width: 40%;
+  justify-content: space-between;
+}
+nav ul li a {
+  color: #080809;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+nav ul li a:hover {
+  color: blue;
+}
+
+/* Humberger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+}
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: black;
+  position: relative;
+  border-radius: 3px;
+  transition: all 0.6;
+}
+.menu-toggle input {
+  position: absolute;
+  width: 29px;
+  height: 23px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* humburger menu animation */
+/* css sibling */
+/* dengan css sibling jadi tidak perlu menamakan span dengan class */
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+/* untuk tan x di responsive */
+/* porosnya biar di tengah garis */
+.menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(-1px, 0px);
+}
+.menu-toggle input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+}
+
+/* Responsive  Breakpoint */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  nav ul li.hidden {
+    display: none;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  nav ul li.hidden {
+    display: none;
+  }
+}
+
+/* Ukuran Tablet */
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 50%;
+  }
+
+  nav ul li.hidden {
+    display: none;
+  }
+}
+
+/* Ukuran Mobile */
+@media screen and (max-width: 576px) {
+  .menu-toggle {
+    display: flex;
+  }
+  nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: rgba(9, 1, 1, 0.15);
+    transform: translateX(100%);
+    transition: all 1s;
+    opacity: 0;
+  }
+  nav ul li.hidden {
+    display: list-item;
+  }
+
+  nav ul.slide {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.text-justify {
+  text-align: justify;
+}
+@media screen and (max-width: 320px) {
+  .text-tengah {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 375px) {
+  .text-tengah {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 425px) {
+  .text-tengah {
+    text-align: center;
+  }
+}
+.warna-biru {
+  background-color: #0d28a6;
+}
+.heroBar {
+  background-color: #f1f3ff;
+  height: 380px;
+  width: auto;
+}
+
+/* Testimonial */
+.testi {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.title-testi {
+  font-weight: bold;
+  font-size: 24px;
+  padding: 100px 0 16px 0;
+}
+
+.desc-testi {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.content-testi {
+  width: 619px;
+  height: 270px;
+  background: #f1f3ff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-left: 450px;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.carousel-item {
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.desc-box-testi {
+  width: 415px;
+  height: 80px;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.isi-content-testi {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-testi img {
+  width: 80px;
+  height: 80px;
+  align-items: center;
+  margin-right: 46px;
+}
+
+.nama-testi {
+  font-size: 14px;
+  color: black;
+  margin-top: 8px;
+}
+
+.isi-content-testi img {
+  width: 80px;
+  height: 24px;
+  padding-bottom: 8px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: solid 1px #c4c4c4;
+  margin-top: 24px;
+  margin-right: 24px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #5cb85f;
+}
+
+.button-carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button img {
+  margin-bottom: 2px;
+}
+
+@media only screen and (max-width: 576px) {
+  .content-testi {
+    margin-left: 30px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 320px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .content-testi img {
+    margin-left: 10px;
+    margin-bottom: 16px;
   }
+
+  .isi-content-testi img {
+    margin-left: 150px;
+  }
+
+  .profpic {
+    justify-content: center;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .rate {
+    justify-content: center;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .isi-content-testi {
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  .title-testi {
+    padding-top: 50px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  .content-testi {
+    margin-left: 30px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+  }
+
+  .content-testi img {
+    margin-left: 10px;
+    margin-bottom: 16px;
+  }
+
+  .isi-content-testi img {
+    margin-left: 150px;
+  }
+
+  .profpic {
+    justify-content: center;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .rate {
+    justify-content: center;
+    margin-right: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .isi-content-testi {
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  .title-testi {
+    padding-top: 50px;
+  }
+}
+
+.getting-start {
+  background-color: #0d28a6;
+  padding-top: 5;
+  padding-bottom: 5;
+  position: 5;
+  border-radius: 5;
+}
+
+.footer {
+  padding: 125px 0 25px;
 }
